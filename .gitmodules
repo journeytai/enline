@@ -1,0 +1,3 @@
+[submodule "line-desktop-skill"]
+	path = line-desktop-skill
+	url = https://github.com/kaosensei/line-desktop-skill.git
