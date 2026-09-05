@@ -20,7 +20,7 @@ line-desktop-skill (enline/line-desktop-skill/)
     ▼ (raw messages)
 scripts/digest.py (cron job)
     │
-    ├─► Qwen 3.5 4B → translate + summarize
+    ├─► omniroute API → translate + summarize
     │
     ├─► Apple Vision OCR → attachment text
     │
@@ -41,7 +41,7 @@ scripts/digest.py (cron job)
 | Ticket | Decision |
 |--------|----------|
 | ASF-180 | LINE data access via `line-desktop-skill` (AppleScript + cliclick) |
-| ASF-181 | Qwen 3.5 4B (local Ollama) for translation, cloud API fallback |
+| ASF-181 | Hermes omniroute (cloud API) for translation and summarization |
 | ASF-182 | Discord DM push + TailScale web UI for detail |
 | ASF-183 | Static HTML/CSS/JS served via `python3 -m http.server` + `tailscale serve` |
 | ASF-184 | Clipboard copy for text, screenshot + Apple Vision OCR for attachments |
@@ -73,8 +73,7 @@ scripts/digest.py (cron job)
 ### 1.4 Build translation pipeline
 - [ ] Create `enline/scripts/translate.py` — takes raw messages, outputs JSON
 - [ ] Test with sample Chinese messages
-- [ ] Verify Qwen 3.5 4B output quality (translation accuracy, summary conciseness)
-- [ ] Add cloud API fallback path
+- [ ] Verify omniroute output quality (translation accuracy, summary conciseness)
 
 ---
 
@@ -85,7 +84,7 @@ scripts/digest.py (cron job)
   1. Read LINE messages since last run (from `enline/data/state.json`)
   2. Filter out user's own messages
   3. Filter out muted groups and keyword-filtered messages
-  4. Translate + summarize via Qwen 3.5 4B
+  4. Translate + summarize via omniroute API
   5. Detect mentions (user's LINE name + aliases)
   6. Format as Discord embed JSON
   7. Save digest to `enline/data/digests/YYYY-MM-DD_HHMM.json`
